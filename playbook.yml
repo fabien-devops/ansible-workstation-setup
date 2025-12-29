@@ -1,0 +1,48 @@
+---
+- name: Ansible Workstation Setup
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Create a user account
+      user:
+        name: "{{ user }}"
+        groups: "{{ user_group }}"
+        shell: "{{ shell }}"
+        create_home: yes
+
+    - name: Update apt
+      apt: 
+        update_cache: yes
+        upgrade: dist
+        autoremove: yes 
+
+    - name: Install Software
+      apt:
+        name:
+          - git
+          - curl
+          - wget
+          - htop 
+          - tree
+          - vim
+          - nano
+          - nodejs
+        state: present
+    
+    - name: Set MOTD
+      ansible.builtin.copy:
+        src: motd
+        dest: /etc/update-motd.d/99-custom
+        owner: root 
+        group: root 
+        mode: '0755'
+
+    - name: Set the system hostname
+      ansible.builtin.hostname:
+        name: "{{ inventory_hostname }}"
+      when: ansible_fqdn != inventory_hostname
+
+    - name: Set timezone UTC
+      community.general.timezone:
+        name: Etc/UTC
