@@ -607,7 +607,7 @@ DevOps Engineer passionate about automation and infrastructure as code.
 
 - **GitHub**: [fabien-devops](https://github.com/fabien-devops)
 - **LinkedIn**: [Fabien Andrianambinintsoa](https://www.linkedin.com/in/fabien-andrianambinintsoa)
-- **Email**: fabien.andrianambinintsoa@gmail.com
+- **Email**: hfabien.andrianambinintsoa@gmail.com
 
 ## Acknowledgments
 
